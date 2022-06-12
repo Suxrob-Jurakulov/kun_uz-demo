@@ -1,0 +1,27 @@
+POST http://localhost:8080/region/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ4MDkyOTMsImV4cCI6MTY1NDgxMjg5MywiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjozLCJyb2xlIjoiQURNSU4ifQ.uakJMTXkeLJRBAuBXfH579HJQZOXC0aT8J0aK1-JOpU
+
+{
+  "key": "tashkent",
+  "nameUz": "Toshkent",
+  "nameRu": "T",
+  "nameEn": "Tashkent"
+}
+
+###
+
+GET http://localhost:8080/region/list
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ4MTAzNjUsImV4cCI6MTY1NDgxMzk2NSwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjozLCJyb2xlIjoiQURNSU4ifQ.QyusjigB5yLUR4XUc75esgkeBHfpG1EAKly2dLuSfnc
+
+
+###
+
+PUT http://localhost:8080/region/update/tashkent
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ4MTAzNjUsImV4cCI6MTY1NDgxMzk2NSwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjozLCJyb2xlIjoiQURNSU4ifQ.QyusjigB5yLUR4XUc75esgkeBHfpG1EAKly2dLuSfnc
+
+{
+  "key": "ttt",
+  "nameUz": "toshkent"
+}

@@ -1,0 +1,11 @@
+               HOMEWORK
+            1. Article CRUD
+            2. ArticleLike
+            3. Comment CRUD
+            4. CommentLike
+
+
+
+            select a.content, a.publish_date, a. description, a.shared_count, a.title, a.view_count, t.key from article_types art
+            join article a on art.article_id = a.id
+            join types t on art.types_id = t.id

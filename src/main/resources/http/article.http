@@ -1,0 +1,23 @@
+POST http://localhost:8080/article/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUwMzMxMTQsImV4cCI6MTY1NTAzNjcxNCwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoyLCJyb2xlIjoiTU9ERVJBVE9SIn0.2836g0pjDX7-lHqfmIab-0TgaDSrnIT4tCQUm02BmuQ
+
+{
+  "title": "How",
+  "content": "Guys",
+  "description": "Ko'rishish",
+  "regionId": 1,
+  "categoryId": 1,
+  "typesList": [1, 2],
+  "tagList": ["ilm", "salom"]
+}
+
+###
+
+GET http://localhost:8080/article/list/cat/1
+
+
+###
+
+DELETE http://localhost:8080/article/delete/4028ab428157bce8018157bdbded0000
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUwNDk4MjgsImV4cCI6MTY1NTA1MzQyOCwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiQURNSU4ifQ.LJl8zheQTQMAX2T0ediViN27SrROrNpwgdG9lkhNJbk

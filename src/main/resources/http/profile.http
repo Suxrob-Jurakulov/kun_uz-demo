@@ -1,0 +1,35 @@
+POST http://localhost:8080/profile/create/MODERATOR
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ3ODM5NjIsImV4cCI6MTY1NDc4NzU2MiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjozLCJyb2xlIjoiQURNSU4ifQ.vc_IYn8_A1yUZO_N-GRqJ84E8_CFv05LZaRn-j3UvSc
+#Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ3ODQ1NzMsImV4cCI6MTY1NDc4ODE3MywiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiVVNFUiJ9.EcEp4h7mfl80llec8CqpugP4S_QZ7XsZ54wosHZDvDM
+
+{
+  "name": "Avaz",
+  "surname": "Avazov",
+  "email": "avaz",
+  "password": "1234"
+}
+
+###
+
+PUT http://localhost:8080/profile/update
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ3ODY1MTUsImV4cCI6MTY1NDc5MDExNSwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjo3LCJyb2xlIjoiVVNFUiJ9.78UycSUGq3AnZ7TtJie4f_S3ya7jxASqwM_NsMScryw
+
+{
+  "name": "Valijon",
+  "surname": "Valijonov",
+  "password": "123"
+}
+
+
+###
+
+GET http://localhost:8080/profile/list/USER
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ4MDgyMDYsImV4cCI6MTY1NDgxMTgwNiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjozLCJyb2xlIjoiQURNSU4ifQ.T90vwPp01aCpQcqJQKAyjY52e_ns9dFaLB74-xiHBFE
+
+
+###
+
+DELETE http://localhost:8080/profile/delete/1
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ4MDgyMDYsImV4cCI6MTY1NDgxMTgwNiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjozLCJyb2xlIjoiQURNSU4ifQ.T90vwPp01aCpQcqJQKAyjY52e_ns9dFaLB74-xiHBFE
