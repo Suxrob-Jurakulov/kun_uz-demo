@@ -1,23 +1,36 @@
 POST http://localhost:8080/article/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUwMzMxMTQsImV4cCI6MTY1NTAzNjcxNCwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoyLCJyb2xlIjoiTU9ERVJBVE9SIn0.2836g0pjDX7-lHqfmIab-0TgaDSrnIT4tCQUm02BmuQ
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyMTM1OTIsImV4cCI6MTY1NTIxNzE5MiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoyLCJyb2xlIjoiTU9ERVJBVE9SIn0.gntOYMRxmG8qzz8boKGktJKg-pY1q36FnK_VyTL4tEc
 
 {
-  "title": "How",
-  "content": "Guys",
-  "description": "Ko'rishish",
-  "regionId": 1,
-  "categoryId": 1,
-  "typesList": [1, 2],
-  "tagList": ["ilm", "salom"]
+  "title": "b",
+  "content": "b",
+  "description": "b",
+  "regionId": 2,
+  "categoryId": 2,
+  "typesList": [5, 1],
+  "tagList": ["asd", "das"]
 }
 
 ###
 
-GET http://localhost:8080/article/list/cat/1
+GET http://localhost:8080/article/list/mod/2
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyMDMxODEsImV4cCI6MTY1NTIwNjc4MSwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiQURNSU4ifQ.zaaGSHISWURG89I_61m-C8DUUxF1KmqWOOcWDf83z28
+
+###
+
+GET http://localhost:8080/article/list
+
+###
+
+GET http://localhost:8080/article/list/type?key=as
 
 
 ###
 
 DELETE http://localhost:8080/article/delete/4028ab428157bce8018157bdbded0000
 Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUwNDk4MjgsImV4cCI6MTY1NTA1MzQyOCwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiQURNSU4ifQ.LJl8zheQTQMAX2T0ediViN27SrROrNpwgdG9lkhNJbk
+
+###
+
+GET localhost:8080/article/pagination?page=1&size=10

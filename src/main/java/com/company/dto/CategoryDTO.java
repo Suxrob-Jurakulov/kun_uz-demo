@@ -16,4 +16,5 @@ public class CategoryDTO {
     private String nameUz;
     private String nameRu;
     private String nameEn;
+    private String name;
 }

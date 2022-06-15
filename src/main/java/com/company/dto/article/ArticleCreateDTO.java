@@ -1,12 +1,10 @@
 package com.company.dto.article;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class ArticleCreateDTO {
 
     private String title;

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
-@Table(name = "article_types")
+@Table(name = "article_types", uniqueConstraints = @UniqueConstraint(columnNames = {"article_id", "types_id"}))
 public class ArticleTypeEntity {
 
     @Id

@@ -1,17 +1,17 @@
 package com.company;
 
 import com.company.dto.article.ArticleDTO;
-import com.company.entity.ProfileEntity;
-import com.company.enums.ProfileStatus;
+import com.company.entity.ArticleEntity;
+import com.company.entity.TypesEntity;
+import com.company.repository.ArticleTypeRepository;
 import com.company.repository.ProfileRepository;
 import com.company.service.ArticleService;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootTest
 class KunUzApplicationTests {
@@ -19,11 +19,10 @@ class KunUzApplicationTests {
     private ProfileRepository profileRepository;
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private ArticleTypeRepository articleTypeRepository;
 
     @Test
     void contextLoads() {
-        List<ArticleDTO> list = articleService.listByType(1);
-        System.out.println(list);
-
     }
 }

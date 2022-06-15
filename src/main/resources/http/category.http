@@ -1,6 +1,15 @@
 POST localhost:8080/category/create
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyMTM1MTMsImV4cCI6MTY1NTIxNzExMywiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiQURNSU4ifQ.g4UibfGApMButTppoyRUIDMYl4YXdrFXeHnuUkK0rH8
 
 {
-  "key": ""
+  "key": "g",
+  "nameUz": "uz",
+  "nameRu": "ru",
+  "nameEn": "en"
 }
+
+###
+
+GET http://localhost:8080/category/list/public
+Accept-Language: uz

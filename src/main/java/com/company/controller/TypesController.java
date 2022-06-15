@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.dto.TypesDTO;
+import com.company.enums.LangEnum;
 import com.company.enums.ProfileRole;
 import com.company.service.TypesService;
 import com.company.util.JwtUtil;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("article_type")
-public class ArticleTypeController {
+@RequestMapping("/types")
+public class TypesController {
     @Autowired
     private TypesService typesService;
 
@@ -42,5 +43,12 @@ public class ArticleTypeController {
         JwtUtil.decode(token, ProfileRole.ADMIN);
         typesService.delete(key);
         return ResponseEntity.ok().body("Successfully deleted");
+    }
+
+    @GetMapping("/list/public")
+//    public ResponseEntity<?> getArticleList(@RequestParam(value = "lang", defaultValue = "uz")LangEnum lang){
+    public ResponseEntity<?> getArticleList(@RequestHeader(value = "Accept-Language", defaultValue = "uz")LangEnum lang){
+        List<TypesDTO> list = typesService.getList(lang);
+        return ResponseEntity.ok().body(list);
     }
 }

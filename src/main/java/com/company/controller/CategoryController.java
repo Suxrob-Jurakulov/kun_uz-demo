@@ -1,6 +1,8 @@
 package com.company.controller;
 
 import com.company.dto.CategoryDTO;
+import com.company.dto.TypesDTO;
+import com.company.enums.LangEnum;
 import com.company.enums.ProfileRole;
 import com.company.service.CategoryService;
 import com.company.util.JwtUtil;
@@ -42,5 +44,11 @@ public class CategoryController {
         JwtUtil.decode(token, ProfileRole.ADMIN);
         categoryService.delete(key);
         return ResponseEntity.ok().body("Successfully deleted");
+    }
+
+    @GetMapping("/list/public")
+    public ResponseEntity<?> getArticleList(@RequestHeader(value = "Accept-Language", defaultValue = "uz") LangEnum lang){
+        List<CategoryDTO> list = categoryService.getList(lang);
+        return ResponseEntity.ok().body(list);
     }
 }

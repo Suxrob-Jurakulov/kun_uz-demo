@@ -1,5 +1,7 @@
 package com.company.dto.comment;
 
+import com.company.entity.ArticleEntity;
+import com.company.entity.ProfileEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
@@ -11,7 +13,7 @@ public class CommentDTO {
     private Integer id;
     private String content;
     private LocalDateTime createdDate;
-    private Integer profileId;
-    private String articleId;
+    private ProfileEntity profile;
+    private ArticleEntity article;
     private Integer replyId;
 }

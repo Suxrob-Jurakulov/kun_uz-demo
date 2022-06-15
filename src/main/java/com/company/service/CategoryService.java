@@ -1,7 +1,10 @@
 package com.company.service;
 
 import com.company.dto.CategoryDTO;
+import com.company.dto.TypesDTO;
 import com.company.entity.CategoryEntity;
+import com.company.entity.TypesEntity;
+import com.company.enums.LangEnum;
 import com.company.exp.BadRequestException;
 import com.company.exp.ItemNotFoundException;
 import com.company.repository.CategoryRepository;
@@ -78,5 +81,23 @@ public class CategoryService {
         return categoryRepository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("Region not found");
         });
+    }
+
+
+    public List<CategoryDTO> getList(LangEnum lang) {
+        Iterable<CategoryEntity> all = categoryRepository.findAll();
+        List<CategoryDTO> list = new LinkedList<>();
+        for (CategoryEntity entity: all){
+            CategoryDTO dto = new CategoryDTO();
+            dto.setId(entity.getId());
+            dto.setKey(entity.getKey());
+            switch (lang) {
+                case ru -> dto.setName(entity.getNameRu());
+                case en -> dto.setName(entity.getNameEn());
+                case uz -> dto.setName(entity.getNameUz());
+            }
+            list.add(dto);
+        }
+        return list;
     }
 }

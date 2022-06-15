@@ -5,13 +5,10 @@ import com.company.entity.ProfileEntity;
 import com.company.entity.RegionEntity;
 import com.company.enums.ArticleStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleDTO {
     private String id;
@@ -24,7 +21,9 @@ public class ArticleDTO {
     private Boolean visible = Boolean.TRUE;
     private LocalDateTime createdDate;
     private LocalDateTime publishDate;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private ProfileEntity moderator;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private ProfileEntity publisher;
     private RegionEntity region;
     private CategoryEntity category;
