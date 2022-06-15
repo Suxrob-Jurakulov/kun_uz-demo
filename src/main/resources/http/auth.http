@@ -18,3 +18,14 @@ Content-Type: application/json
   "email": "moder",
   "password": "1234"
 }
+
+###
+
+
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "user",
+  "password": "123"
+}

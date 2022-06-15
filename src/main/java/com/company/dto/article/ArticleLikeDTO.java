@@ -2,12 +2,12 @@ package com.company.dto.article;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
 public class ArticleLikeDTO {
 
-    private Boolean status;
-    private Integer profileId;
     private String articleId;
 }

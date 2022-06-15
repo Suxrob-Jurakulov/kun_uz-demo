@@ -2,7 +2,7 @@ package com.company.controller;
 
 import com.company.exp.BadRequestException;
 import com.company.exp.ItemNotFoundException;
-import com.company.exp.NoPermissionException;
+import com.company.exp.NotPermissionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,8 +15,8 @@ public class AdviceController {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 
-    @ExceptionHandler({NoPermissionException.class})
-    public ResponseEntity<String> handler(NoPermissionException e) {
+    @ExceptionHandler({NotPermissionException.class})
+    public ResponseEntity<String> handler(NotPermissionException e) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
     }
 

@@ -1,23 +1,50 @@
 package com.company.controller;
 
+import com.company.dto.article.ArticleCreateDTO;
+import com.company.dto.article.ArticleDTO;
+import com.company.dto.article.ArticleLikeDTO;
+import com.company.enums.ProfileRole;
 import com.company.service.ArticleLikeService;
-import com.company.util.JwtUtil;
+import com.company.util.HttpHeaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
+@RequestMapping("/article_like")
 @RestController
-@RequestMapping("/articleLike")
 public class ArticleLikeController {
+
     @Autowired
     private ArticleLikeService articleLikeService;
 
     @PostMapping("/like")
-    public ResponseEntity<?> like(@RequestParam(value = "like", defaultValue = "-1") int mark,
-                                  @RequestHeader("Content-ID") String articleId,
-                                  @RequestHeader("Authorization") String token) {
-        Integer profileId = JwtUtil.decode(token);
-        articleLikeService.like(profileId, articleId, mark);
-        return ResponseEntity.ok().body("Like");
+    public ResponseEntity<Void> like(@RequestBody ArticleLikeDTO dto,
+                                     HttpServletRequest request) {
+        Integer profileId = HttpHeaderUtil.getId(request);
+        articleLikeService.articleLike(dto.getArticleId(), profileId);
+        return ResponseEntity.ok().build();
     }
+
+    @PostMapping("/dislike")
+    public ResponseEntity<Void> dislike(@RequestBody ArticleLikeDTO dto,
+                                        HttpServletRequest request) {
+        Integer profileId = HttpHeaderUtil.getId(request);
+        articleLikeService.articleDisLike(dto.getArticleId(), profileId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/remove")
+    public ResponseEntity<Void> remove(@RequestBody ArticleLikeDTO dto,
+                                       HttpServletRequest request) {
+        Integer profileId = HttpHeaderUtil.getId(request);
+        articleLikeService.removeLike(dto.getArticleId(), profileId);
+        return ResponseEntity.ok().build();
+    }
+
 }

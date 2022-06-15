@@ -1,15 +1,15 @@
-POST http://localhost:8080/article/create
+POST http://localhost:8080/article/adm/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyMTM1OTIsImV4cCI6MTY1NTIxNzE5MiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoyLCJyb2xlIjoiTU9ERVJBVE9SIn0.gntOYMRxmG8qzz8boKGktJKg-pY1q36FnK_VyTL4tEc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyOTgwMDIsImV4cCI6MTY1NTMwMTYwMiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoyLCJyb2xlIjoiTU9ERVJBVE9SIn0.soJPAPsf5zuWQMPhcWe-nYOIoY6jaz-D9UjLzUE5a5E
 
 {
-  "title": "b",
-  "content": "b",
-  "description": "b",
-  "regionId": 2,
-  "categoryId": 2,
-  "typesList": [5, 1],
-  "tagList": ["asd", "das"]
+  "title": "qwe",
+  "content": "qwe",
+  "description": "qwe",
+  "regionId": 1,
+  "categoryId": 1,
+  "typesList": [1, 2],
+  "tagList": ["asqwed", "d2as"]
 }
 
 ###
