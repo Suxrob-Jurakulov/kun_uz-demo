@@ -17,6 +17,8 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
 
     Optional<ProfileEntity> findByEmailAndPassword(String email, String password);
 
+    Optional<ProfileEntity> findByIdAndVisible(Integer id, Boolean visible);
+
     @Query("from ProfileEntity where status = ?1 and role = ?2")
     List<ProfileEntity> userList(ProfileStatus status, ProfileRole role);
 

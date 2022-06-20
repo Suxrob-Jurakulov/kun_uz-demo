@@ -18,7 +18,6 @@ public class InitController {
     @Autowired
     private ProfileRepository profileRepository;
 
-
     @GetMapping("/initAdmin")
     public String initAdmin() {
         Optional<ProfileEntity> optional = profileRepository.findByEmail("admin");

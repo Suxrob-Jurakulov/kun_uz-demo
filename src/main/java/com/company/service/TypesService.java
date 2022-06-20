@@ -53,8 +53,8 @@ public class TypesService {
         return list;
     }
 
-    public void update(TypesDTO dto, String key) {
-        TypesEntity entity = get(key);
+    public void update(TypesDTO dto) {
+        TypesEntity entity = get(dto.getKey());
         if (dto.getKey() != null) {
             entity.setKey(dto.getKey());
         }

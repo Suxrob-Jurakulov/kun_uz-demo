@@ -14,7 +14,6 @@ public class ArticleTagService {
     @Autowired
     private TagService tagService;
 
-
     public void create(ArticleEntity article, List<String> tagList) {
         // ["#maymunChechak","#kasallik","#epidemiya"]
         for (String tagName : tagList) {
@@ -25,9 +24,10 @@ public class ArticleTagService {
             articleTagEntity.setTag(tag);
 
             articleTagRepository.save(articleTagEntity);
-
         }
-
     }
 
+    public List<String> getTagListByArticle(String articleId){
+        return articleTagRepository.getTagListByArticleId(articleId);
+    }
 }

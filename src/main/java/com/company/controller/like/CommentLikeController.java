@@ -1,14 +1,10 @@
-package com.company.controller;
+package com.company.controller.like;
 
-import com.company.dto.article.ArticleCreateDTO;
-import com.company.dto.article.ArticleDTO;
-import com.company.dto.article.ArticleLikeDTO;
-import com.company.enums.ProfileRole;
-import com.company.service.ArticleLikeService;
+import com.company.dto.comment.CommentLikeDTO;
+import com.company.service.like.CommentLikeService;
 import com.company.util.HttpHeaderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,35 +12,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
-@RequestMapping("/article_like")
 @RestController
-public class ArticleLikeController {
+@RequestMapping("/comment_like")
+public class CommentLikeController {
 
     @Autowired
-    private ArticleLikeService articleLikeService;
+    private CommentLikeService commentLikeService;
 
     @PostMapping("/like")
-    public ResponseEntity<Void> like(@RequestBody ArticleLikeDTO dto,
+    public ResponseEntity<Void> like(@RequestBody CommentLikeDTO dto,
                                      HttpServletRequest request) {
         Integer profileId = HttpHeaderUtil.getId(request);
-        articleLikeService.articleLike(dto.getArticleId(), profileId);
+        commentLikeService.commentLike(dto.getCommentId(), profileId);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/dislike")
-    public ResponseEntity<Void> dislike(@RequestBody ArticleLikeDTO dto,
+    public ResponseEntity<Void> dislike(@RequestBody CommentLikeDTO dto,
                                         HttpServletRequest request) {
         Integer profileId = HttpHeaderUtil.getId(request);
-        articleLikeService.articleDisLike(dto.getArticleId(), profileId);
+        commentLikeService.commentDislike(dto.getCommentId(), profileId);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/remove")
-    public ResponseEntity<Void> remove(@RequestBody ArticleLikeDTO dto,
+    public ResponseEntity<Void> remove(@RequestBody CommentLikeDTO dto,
                                        HttpServletRequest request) {
         Integer profileId = HttpHeaderUtil.getId(request);
-        articleLikeService.removeLike(dto.getArticleId(), profileId);
+        commentLikeService.removeLike(dto.getCommentId(), profileId);
         return ResponseEntity.ok().build();
     }
-
 }

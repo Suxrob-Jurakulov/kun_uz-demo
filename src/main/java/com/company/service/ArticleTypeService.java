@@ -29,4 +29,8 @@ public class ArticleTypeService {
         TypesEntity types = typesService.get(key);
         return articleTypeRepository.getEntity(types);
     }
+//    public List<ArticleEntity> getByTypeByLimit(Integer typeId, Integer limit){
+//        List<ArticleEntity> list = .getByType(typeId, limit);
+//        return list;
+//    }
 }

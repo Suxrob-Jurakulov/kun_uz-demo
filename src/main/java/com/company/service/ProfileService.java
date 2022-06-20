@@ -19,28 +19,21 @@ public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
-    public ProfileDTO create(ProfileDTO dto, String role) {
+    public ProfileDTO create(ProfileDTO dto) {
         Optional<ProfileEntity> optional = profileRepository.findByEmail(dto.getEmail());
         if (optional.isPresent()) {
             throw new BadRequestException("User already exists");
         }
+        ProfileRole role = checkRole(dto.getRole().name());
 
         ProfileEntity entity = new ProfileEntity();
+        entity.setRole(role);
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
-
         entity.setStatus(ProfileStatus.ACTIVE);
         entity.setVisible(true);
-
-        if (role.equals("USER")) {
-            entity.setRole(ProfileRole.USER);
-        } else if (role.equals("MODERATOR")) {
-            entity.setRole(ProfileRole.MODERATOR);
-        } else {
-            throw new BadRequestException("This role not found");
-        }
 
         profileRepository.save(entity);
         dto.setId(entity.getId());
@@ -49,40 +42,47 @@ public class ProfileService {
 
     public void update(Integer id, ProfileDTO dto) {
         ProfileEntity entity = get(id);
-        entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
         entity.setPassword(dto.getPassword());
         profileRepository.save(entity);
     }
 
     public ProfileEntity get(Integer id) {
-        return profileRepository.findById(id).orElseThrow(() -> {
+        return profileRepository.findByIdAndVisible(id, true).orElseThrow(() -> {
             throw new ItemNotFoundException("Profile not found");
         });
     }
 
     public List<ProfileDTO> list(String role) {
-        ProfileRole who = null;
-        if (role.equals(ProfileRole.USER.name())) {
-            who = ProfileRole.USER;
-        } else if (role.equals(ProfileRole.MODERATOR.name())) {
-            who = ProfileRole.MODERATOR;
+        Iterable<ProfileEntity> all;
+        if (role.equals("all")) {
+            all = profileRepository.findAll();
         } else {
-            throw new BadRequestException("This role not found");
+            all = profileRepository.userList(ProfileStatus.ACTIVE, checkRole(role));
         }
-        Iterable<ProfileEntity> all = profileRepository.userList(ProfileStatus.ACTIVE, who);
+       return entityToDtoList(all);
+    }
+
+    private List<ProfileDTO> entityToDtoList(Iterable<ProfileEntity> entityList){
         List<ProfileDTO> dtoList = new LinkedList<>();
-        for (ProfileEntity entity : all) {
+        for (ProfileEntity entity : entityList) {
             ProfileDTO dto = new ProfileDTO();
             dto.setId(entity.getId());
             dto.setName(entity.getName());
             dto.setSurname(entity.getSurname());
             dto.setEmail(entity.getEmail());
             dto.setCreatedDate(entity.getCreatedDate());
-
             dtoList.add(dto);
         }
         return dtoList;
+    }
+
+    private ProfileRole checkRole(String role) {
+        try {
+            return ProfileRole.valueOf(role);
+        }catch (RuntimeException e){
+           throw new BadRequestException("Role is wrong");
+        }
     }
 
     public void delete(Integer id) {

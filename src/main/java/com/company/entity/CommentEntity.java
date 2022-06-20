@@ -38,4 +38,11 @@ public class CommentEntity {
     @JoinColumn(name = "profile_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private ProfileEntity profile;
+
+    public CommentEntity() {
+    }
+
+    public CommentEntity(Integer id) {
+        this.id = id;
+    }
 }

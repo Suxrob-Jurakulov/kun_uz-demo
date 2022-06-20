@@ -1,5 +1,6 @@
 package com.company.service;
 
+import com.company.dto.ProfileDTO;
 import com.company.dto.article.ArticleDTO;
 import com.company.dto.comment.CommentDTO;
 import com.company.entity.ArticleEntity;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -54,7 +56,8 @@ public class CommentService {
             throw new BadRequestException("Not found");
         }
         ProfileEntity profile = profileService.get(profileId);
-        if (profile != dto.getProfile()) {
+
+        if (!Objects.equals(profile.getId(), dto.getProfile().getId())) {
             throw new BadRequestException("Mazgi bu sening commenting emas");
         }
 
@@ -82,19 +85,19 @@ public class CommentService {
             dto1.setContent(ent.getContent());
             dto1.setCreatedDate(ent.getCreatedDate());
 
-            ProfileEntity profile = new ProfileEntity();
-            profile.setName(ent.getProfile().getName());
-            profile.setSurname(ent.getProfile().getSurname());
-            profile.setEmail(ent.getProfile().getEmail());
+            ProfileDTO profileDTO = new ProfileDTO();
+            profileDTO.setName(ent.getProfile().getName());
+            profileDTO.setSurname(ent.getProfile().getSurname());
+            profileDTO.setEmail(ent.getProfile().getEmail());
 
-            dto1.setProfile(profile);
+            dto1.setProfile(profileDTO);
 
-            ArticleEntity article = new ArticleEntity();
-            article.setTitle(ent.getArticle().getTitle());
-            article.setContent(ent.getArticle().getContent());
-            article.setDescription(ent.getArticle().getDescription());
+            ArticleDTO articleDTO = new ArticleDTO();
+            articleDTO.setTitle(ent.getArticle().getTitle());
+            articleDTO.setContent(ent.getArticle().getContent());
+            articleDTO.setDescription(ent.getArticle().getDescription());
 
-            dto1.setArticle(article);
+            dto1.setArticle(articleDTO);
 
             list.add(dto1);
         }

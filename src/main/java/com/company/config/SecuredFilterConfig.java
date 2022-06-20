@@ -18,6 +18,11 @@ public class SecuredFilterConfig {
         bean.addUrlPatterns("/profile/adm/*");
         bean.addUrlPatterns("/article/adm/*");
         bean.addUrlPatterns("/article_like/*");
+        bean.addUrlPatterns("/category/adm/*");
+        bean.addUrlPatterns("/comment/adm/*");
+        bean.addUrlPatterns("/region/adm/*");
+        bean.addUrlPatterns("/types/adm/*");
+        bean.addUrlPatterns("/comment_like/*");
         return bean;
     }
 }

@@ -23,7 +23,7 @@ GET http://localhost:8080/article/list
 
 ###
 
-GET http://localhost:8080/article/list/type?key=as
+GET http://localhost:8080/article/list/type?key=dolzarb
 
 
 ###
@@ -34,3 +34,38 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUwNDk4MjgsImV4cCI6MTY1NTA1MzQy
 ###
 
 GET localhost:8080/article/pagination?page=1&size=10
+
+###
+
+GET localhost:8080/article/list/8
+Content-Type: application/json
+
+{
+  "idList": ["8a8a85138167727401816774b5140001",
+  "8a8a851381677274018167740d740000",
+  "ff808081816269b9018162744c3a000c"]
+}
+
+###
+
+GET http://localhost:8080/article/list/3?type=dolzarb
+
+
+###
+GET http://localhost:8080/article/category/dolzarb
+###
+GET localhost:8080/article/list4_most
+###
+GET localhost:8080/article/listByTag/meva
+###
+GET localhost:8080/article/listByTypeByRegion/dolzarb/buxoro
+###
+PUT localhost:8080/article/adm/view_count
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTU2NTQxOTYsImV4cCI6MTY1NTg3MDE5NiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjo0LCJyb2xlIjoiVVNFUiJ9.5hRlWaovrLiRMo_fUb7sem8oI--NvU7nCvmayN35Xug
+Content-ID: 8a8a85138167727401816774b5140001
+###
+GET localhost:8080/article/listByCategoryByPagination?category=a&page=0&size=5
+###
+GET localhost:8080/article/listFullInfo
+Accept-Language: uz
+Content-ID: ff808081816269b90181627437130008

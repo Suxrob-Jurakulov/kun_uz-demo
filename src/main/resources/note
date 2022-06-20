@@ -1,11 +1,55 @@
-               HOMEWORK
-            1. Article CRUD
-            2. ArticleLike
-            3. Comment CRUD
-            4. CommentLike
+package lk.slsi.repository;
+
+import java.util.Date;
+import lk.slsi.domain.SLSNotification;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * Created by ignotus on 2/10/2017.
+ */
+public interface SLSNotificationRepository extends CrudRepository<SLSNotification, Integer> {
 
 
+    @Override
+    SLSNotification save(SLSNotification slsNotification);
 
-            select a.content, a.publish_date, a. description, a.shared_count, a.title, a.view_count, t.key from article_types art
-            join article a on art.article_id = a.id
-            join types t on art.types_id = t.id
+    @Override
+    SLSNotification findOne(Integer snumber);
+
+    @Override
+    long count();
+
+    @Override
+    void delete(Integer integer);
+
+    @Override
+    void delete(SLSNotification slsNotification);
+
+    @Override
+    void delete(Iterable<? extends SLSNotification> iterable);
+
+    @Override
+    List<SLSNotification> findAll();
+
+    @Query("select a from SLSNotification a where a.slsiUnit in :unitList order by snumber desc")
+    List<SLSNotification> getApplicationsByUnit(@Param("unitList") List<String> unitList);
+
+    @Query("select a from SLSNotification a where a.userId = :userId")
+    List<SLSNotification> getApplicationsByUserId(@Param("userId") String userId);
+
+    @Query("select a.snumber, a.date, a.slsNo, a.slsiUnit, a.productDesc, a.status from SLSNotification a where a.userId = :userId ORDER BY snumber desc")
+    List<SLSNotification> getApplicationsByUserIdforManage(@Param("userId") String userId);
+
+    @Query("select a from SLSNotification a where a.slsNo = :slsNo")
+    SLSNotification getApplicationBySLSNumber(@Param("slsNo") String slsNo);
+
+}

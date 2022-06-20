@@ -1,6 +1,6 @@
-POST http://localhost:8080/article_like/like
+POST http://localhost:8080/article_like/dislike
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUzMDMwMzksImV4cCI6MTY1NTUxOTAzOSwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjo0LCJyb2xlIjoiVVNFUiJ9.cVT5C90LMftSnUs1O4_GVTUEYVJb6Pmf-_wgNK52ZCY
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTU3MDY0MzMsImV4cCI6MTY1NTkyMjQzMywiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoyLCJyb2xlIjoiTU9ERVJBVE9SIn0.80RFxu4TKfWW9EJmw_E2cgueewz_z8AFFMGDLw6fWE4
 
 {
   "articleId": "ff808081816269b90181627015650000"

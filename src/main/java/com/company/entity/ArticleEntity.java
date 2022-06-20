@@ -29,10 +29,10 @@ public class ArticleEntity {
     private String description;
 
     @Column(name = "view_count")
-    private Integer viewCount;
+    private Integer viewCount = 0;
 
     @Column(name = "shared_count")
-    private Integer sharedCount;
+    private Integer sharedCount = 0;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -68,5 +68,12 @@ public class ArticleEntity {
 
     public ArticleEntity(String id) {
         this.id = id;
+    }
+
+    public ArticleEntity(String id, String title, String description, LocalDateTime publishDate) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.publishDate = publishDate;
     }
 }

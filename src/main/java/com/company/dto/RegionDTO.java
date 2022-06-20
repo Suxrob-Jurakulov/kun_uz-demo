@@ -16,4 +16,5 @@ public class RegionDTO {
     private String nameUz;
     private String nameRu;
     private String nameEn;
+    private String name;
 }

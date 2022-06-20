@@ -1,4 +1,4 @@
-package com.company.service;
+package com.company.repository;
 
 import com.company.entity.CommentEntity;
 import com.company.entity.CommentLikeEntity;
@@ -11,4 +11,6 @@ import java.util.Optional;
 @Repository
 public interface CommentLikeRepository extends PagingAndSortingRepository<CommentLikeEntity, Integer> {
     Optional<CommentLikeEntity> findByCommentAndProfile(CommentEntity comment, ProfileEntity profile);
+    Optional<CommentLikeEntity> findByCommentIdAndProfileId(Integer cId, Integer pId);
+    void deleteByCommentIdAndProfileId(Integer cId, Integer pId);
 }

@@ -1,13 +1,13 @@
-POST http://localhost:8080/profile/create/MODERATOR
+POST http://localhost:8080/profile/adm/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ3ODM5NjIsImV4cCI6MTY1NDc4NzU2MiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjozLCJyb2xlIjoiQURNSU4ifQ.vc_IYn8_A1yUZO_N-GRqJ84E8_CFv05LZaRn-j3UvSc
-#Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ3ODQ1NzMsImV4cCI6MTY1NDc4ODE3MywiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiVVNFUiJ9.EcEp4h7mfl80llec8CqpugP4S_QZ7XsZ54wosHZDvDM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUzNzc2NjIsImV4cCI6MTY1NTU5MzY2MiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiQURNSU4ifQ.5NUIbg4ka43w1Q9-QREdhTTdcx4ebLCXDjUyZI6R7rI
 
 {
-  "name": "Avaz",
-  "surname": "Avazov",
-  "email": "avaz",
-  "password": "1234"
+  "name": "Lazgi",
+  "surname": "Lazgiyev",
+  "email": "lazgi",
+  "password": "1234",
+  "role": "user"
 }
 
 ###

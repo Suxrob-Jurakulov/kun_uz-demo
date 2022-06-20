@@ -54,8 +54,8 @@ public class CategoryService {
         return list;
     }
 
-    public void update(CategoryDTO dto, String key) {
-        CategoryEntity entity = get(key);
+    public void update(CategoryDTO dto) {
+        CategoryEntity entity = get(dto.getKey());
         entity.setKey(dto.getKey());
         entity.setNameUz(dto.getNameUz());
         entity.setNameRu(dto.getNameRu());

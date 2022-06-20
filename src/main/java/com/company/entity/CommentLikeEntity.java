@@ -1,5 +1,6 @@
 package com.company.entity;
 
+import com.company.enums.LikeStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +20,8 @@ public class CommentLikeEntity {
     private LocalDateTime createdDate = LocalDateTime.now();
 
     @Column
-    private Boolean status;
+    @Enumerated(EnumType.STRING)
+    private LikeStatus status;
 
     @JoinColumn(name = "profile_id")
     @ManyToOne(fetch = FetchType.LAZY)

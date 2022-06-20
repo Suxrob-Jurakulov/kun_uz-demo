@@ -1,5 +1,7 @@
 package com.company.dto.comment;
 
+import com.company.dto.ProfileDTO;
+import com.company.dto.article.ArticleDTO;
 import com.company.entity.ArticleEntity;
 import com.company.entity.ProfileEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -13,7 +15,7 @@ public class CommentDTO {
     private Integer id;
     private String content;
     private LocalDateTime createdDate;
-    private ProfileEntity profile;
-    private ArticleEntity article;
+    private ProfileDTO profile;
+    private ArticleDTO article;
     private Integer replyId;
 }

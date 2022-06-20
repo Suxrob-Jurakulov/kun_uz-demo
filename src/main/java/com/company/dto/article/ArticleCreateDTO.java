@@ -7,6 +7,7 @@ import java.util.List;
 @Data
 public class ArticleCreateDTO {
 
+    private String id;
     private String title;
     private String content;
     private String description;

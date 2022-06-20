@@ -15,4 +15,11 @@ public interface ArticleTypeRepository extends CrudRepository<ArticleTypeEntity,
     @Query("select a.article from ArticleTypeEntity a where a.types = ?1")
     List<ArticleEntity> getEntity(TypesEntity entity);
 
+
+    @Query(value = "select a from ArticleTypeEntity art join ArticleEntity a on a = art.article " +
+            "where art.types = :ty and a.status = 'PUBLISHED' and a.visible = true " +
+            "order by a.createdDate desc")
+    List<ArticleEntity> byType(TypesEntity ty);
+
+
 }

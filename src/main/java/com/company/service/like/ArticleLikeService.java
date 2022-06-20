@@ -1,4 +1,4 @@
-package com.company.service;
+package com.company.service.like;
 
 import com.company.entity.ArticleEntity;
 import com.company.entity.ArticleLikeEntity;
