@@ -1,6 +1,6 @@
 POST http://localhost:8080/region/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyMTM1MTMsImV4cCI6MTY1NTIxNzExMywiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiQURNSU4ifQ.g4UibfGApMButTppoyRUIDMYl4YXdrFXeHnuUkK0rH8
+Authorization:
 
 {
   "key": "samarqand",
@@ -10,9 +10,21 @@ Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyMTM1MTMsImV4cCI6MTY1NTIxNzEx
 }
 
 ###
+POST http://localhost:8080/region/adm/create/region
+Content-Type: application/json
+Authorization: Basic Ali $2a$10$V93CWoH3NxAPC7VzPd9ouuU8PWvZWYdoo94H3HOZ8kFSkBAvYssEe
+
+{
+  "key": "yyyyy",
+  "nameUz": "uz",
+  "nameRu": "ru",
+  "nameEn": "en"
+}
+
+###
 
 GET http://localhost:8080/region/list
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ4MTAzNjUsImV4cCI6MTY1NDgxMzk2NSwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjozLCJyb2xlIjoiQURNSU4ifQ.QyusjigB5yLUR4XUc75esgkeBHfpG1EAKly2dLuSfnc
+Authorization:
 
 
 ###

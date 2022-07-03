@@ -1,25 +1,25 @@
 POST http://localhost:8080/article/adm/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyOTgwMDIsImV4cCI6MTY1NTMwMTYwMiwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoyLCJyb2xlIjoiTU9ERVJBVE9SIn0.soJPAPsf5zuWQMPhcWe-nYOIoY6jaz-D9UjLzUE5a5E
+#Authorization: Ali alish123
 
 {
-  "title": "qwe",
-  "content": "qwe",
-  "description": "qwe",
+  "title": "qweqwe",
+  "content": "lllll",
+  "description": "kkkkk",
   "regionId": 1,
   "categoryId": 1,
   "typesList": [1, 2],
-  "tagList": ["asqwed", "d2as"]
+  "tagList": ["qweqe", "sddss"]
 }
 
 ###
 
 GET http://localhost:8080/article/list/mod/2
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyMDMxODEsImV4cCI6MTY1NTIwNjc4MSwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiQURNSU4ifQ.zaaGSHISWURG89I_61m-C8DUUxF1KmqWOOcWDf83z28
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTUyMDMxODEsImV4cCI6MTY1NTIwNjc4MSwiaXNzIjoiTWF6Z2kgcHJvZHVjdGlvbiIsImlkIjoxLCJyb2xlIjoiQURNSU4ifQ.zaaGSHISWURG89I_61m-C8DUUxF1KmqWOOcWDf83z28
 
 ###
 
-GET http://localhost:8080/article/list
+GET http://192.168.43.194:8080/article/list
 
 ###
 
@@ -69,3 +69,6 @@ GET localhost:8080/article/listByCategoryByPagination?category=a&page=0&size=5
 GET localhost:8080/article/listFullInfo
 Accept-Language: uz
 Content-ID: ff808081816269b90181627437130008
+
+###
+GET localhost:8080/article/public/category/a

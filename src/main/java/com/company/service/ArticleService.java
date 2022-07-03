@@ -1,5 +1,6 @@
 package com.company.service;
 
+import com.company.dto.ArticleFilterDTO;
 import com.company.dto.CategoryDTO;
 import com.company.dto.ProfileDTO;
 import com.company.dto.RegionDTO;
@@ -18,8 +19,12 @@ import com.company.exp.ItemNotFoundException;
 import com.company.mapper.ArticleShortInfo;
 import com.company.repository.ArticleLikeRepository;
 import com.company.repository.ArticleRepository;
+import com.company.repository.custome.CustomArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -42,10 +47,19 @@ public class ArticleService {
     private ArticleTagService articleTagService;
     @Autowired
     private ArticleLikeRepository articleLikeRepository;
+    @Autowired
+    private CustomArticleRepository customArticleRepository;
 
-    public ArticleDTO create(ArticleCreateDTO dto, Integer profileId) {
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (User) authentication.getPrincipal();
+    }
+
+    public ArticleDTO create(ArticleCreateDTO dto) {
         ArticleEntity entity = new ArticleEntity();
-        return save(entity, dto, profileId);
+        User user = getCurrentUser();
+        Integer pId = Integer.parseInt(user.getUsername());
+        return save(entity, dto, pId);
 
     }
 
@@ -427,5 +441,9 @@ public class ArticleService {
         List<String> tagList = articleTagService.getTagListByArticle(entity.getId());
         dto.setTagList(tagList);
         return dto;
+    }
+
+    public void filter(ArticleFilterDTO dto){
+        customArticleRepository.filter(dto);
     }
 }

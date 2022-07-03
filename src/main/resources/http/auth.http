@@ -2,10 +2,11 @@ POST http://localhost:8080/auth/registration
 Content-Type: application/json
 
 {
-  "name": "Moderjon",
-  "surname": "MMM",
-  "email": "moder1",
-  "password": "123"
+  "name": "ASD",
+  "surname": "zxc",
+  "email": "asd123@gmail.com",
+  "password": "1234",
+  "phone": "123456789123"
 }
 
 

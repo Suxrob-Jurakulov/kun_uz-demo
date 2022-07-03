@@ -1,5 +1,6 @@
 package com.company.repository;
 
+import com.company.entity.AttachEntity;
 import com.company.entity.ProfileEntity;
 import com.company.enums.ProfileRole;
 import com.company.enums.ProfileStatus;
@@ -29,4 +30,16 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
     @Modifying
     @Query("update ProfileEntity set status = ?1 where id = ?2")
     void changeStatus(ProfileStatus status, Integer id);
+
+    @Transactional
+    @Modifying
+    @Query("update ProfileEntity set status = ?2 where phone = ?1")
+    void updateStatusByPhone(String phone, ProfileStatus active);
+
+    @Transactional
+    @Modifying
+    @Query("update ProfileEntity set attach = ?2 where id = ?1")
+    void attachSet(Integer id, AttachEntity attach);
+
+
 }

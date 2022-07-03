@@ -1,6 +1,8 @@
 package com.company.service;
 
+import com.company.dto.AttachDTO;
 import com.company.dto.ProfileDTO;
+import com.company.entity.AttachEntity;
 import com.company.entity.ProfileEntity;
 import com.company.enums.ProfileRole;
 import com.company.enums.ProfileStatus;
@@ -9,6 +11,7 @@ import com.company.exp.ItemNotFoundException;
 import com.company.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +21,8 @@ import java.util.Optional;
 public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
+    @Autowired
+    private AttachService attachService;
 
     public ProfileDTO create(ProfileDTO dto) {
         Optional<ProfileEntity> optional = profileRepository.findByEmail(dto.getEmail());
@@ -40,11 +45,43 @@ public class ProfileService {
         return dto;
     }
 
-    public void update(Integer id, ProfileDTO dto) {
-        ProfileEntity entity = get(id);
+    public void update(Integer pId, ProfileDTO dto) {
+
+        Optional<ProfileEntity> profile = profileRepository.findById(pId);
+
+        if (profile.isEmpty()) {
+            throw new ItemNotFoundException("Profile Not Found ");
+        }
+
+//        isValidUpdate(dto);
+
+        ProfileEntity entity = profile.get();
+
+
+        // 1st photo
+        // bor edi yangisiga almashtiradi
+        // null
+
+        if (entity.getPhoto() == null && dto.getPhotoId() != null) {
+
+            entity.setPhoto(new AttachEntity(dto.getPhotoId()));
+
+        } else if (entity.getPhoto() != null && dto.getPhotoId() == null) {
+
+            attachService.delete(entity.getPhoto().getId());
+            entity.setPhoto(null);
+
+        } else if (entity.getPhoto() != null && dto.getPhotoId() != null && entity.getPhoto().getId().equals(dto.getPhotoId())) {
+
+            entity.setPhoto(new AttachEntity(dto.getPhotoId()));
+
+        }
+
+        entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
-        entity.setPassword(dto.getPassword());
+        entity.setEmail(dto.getEmail());
         profileRepository.save(entity);
+
     }
 
     public ProfileEntity get(Integer id) {
@@ -91,5 +128,14 @@ public class ProfileService {
             throw new BadRequestException("This user not found or already deleted!");
         }
         profileRepository.changeStatus(ProfileStatus.NOT_ACTIVE, id);
+    }
+
+    public String setImage(Integer pId, MultipartFile file) {
+        AttachDTO attachDTO = attachService.saveToSystem(file);
+        String attachId = attachDTO.getId();
+        AttachEntity attachEntity = new AttachEntity(attachId);
+
+        profileRepository.attachSet(pId, attachEntity);
+        return "Successfully!";
     }
 }

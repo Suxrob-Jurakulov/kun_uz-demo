@@ -30,6 +30,8 @@ public class ProfileEntity {
 
     @Column(unique = true, nullable = false)
     private String email;
+    @Column
+    private String phone;
 
     @Column(nullable = false)
     private String password;
@@ -44,6 +46,10 @@ public class ProfileEntity {
 
     @Column
     private Boolean visible;
+
+    @OneToOne()
+    @JoinColumn(name = "photo_id")
+    private AttachEntity photo;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "moderator")
     private List<ArticleEntity> articleList;
