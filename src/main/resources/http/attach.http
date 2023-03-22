@@ -30,6 +30,8 @@ Content-Disposition: form-data; name="file"; filename="video.mp4"
 ###
 GET http://localhost:8080/attach/open/4028ab17818895a401818897c3bd0000
 ###
+GET localhost:8080/attach/open_general/2176b318-186d-4d32-b0cf-1e3be7fed5f4
+###
 DELETE localhost:8080/attach/delete/8addb2d8-7752-43af-aa7e-4b43f2562497
 ###
 GET  http://localhost:8080/attach/download/2176b318-186d-4d32-b0cf-1e3be7fed5f4

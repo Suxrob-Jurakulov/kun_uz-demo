@@ -1,4 +1,4 @@
-package com.company.dto;
+package com.company.dto.article;
 
 import com.company.enums.ArticleStatus;
 import lombok.Getter;

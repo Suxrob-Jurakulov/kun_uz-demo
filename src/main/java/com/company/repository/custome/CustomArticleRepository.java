@@ -1,6 +1,6 @@
 package com.company.repository.custome;
 
-import com.company.dto.ArticleFilterDTO;
+import com.company.dto.article.ArticleFilterDTO;
 import com.company.entity.ArticleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

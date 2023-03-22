@@ -1,6 +1,6 @@
 package com.company.service;
 
-import com.company.dto.ArticleFilterDTO;
+import com.company.dto.article.ArticleFilterDTO;
 import com.company.dto.CategoryDTO;
 import com.company.dto.ProfileDTO;
 import com.company.dto.RegionDTO;
@@ -176,18 +176,14 @@ public class ArticleService {
     public List<ArticleDTO> getLast8ArticleNotIn(ArticleListDTO dto) {
         List<ArticleShortInfo> articleList = articleRepository.getLast8ArticleByNotInIdList(dto.getIdList());
         List<ArticleDTO> dtoList = new LinkedList<>();
-        articleList.forEach(article -> {
-            dtoList.add(shortDTOInfo(article));
-        });
+        articleList.forEach(article -> dtoList.add(shortDTOInfo(article)));
         return dtoList;
     }
 
     public List<ArticleDTO> getListByType(String type, int limit) {
         List<ArticleShortInfo> articleList = articleRepository.getByType(type, limit);
         List<ArticleDTO> dtoList = new LinkedList<>();
-        articleList.forEach(article -> {
-            dtoList.add(shortDTOInfo(article));
-        });
+        articleList.forEach(article -> dtoList.add(shortDTOInfo(article)));
         return dtoList;
     }
 
@@ -203,12 +199,10 @@ public class ArticleService {
         Pageable pageable = PageRequest.of(0, 5);
         Page<ArticleEntity> articlePage = articleRepository.findLast5ByCategory(
                 categoryKey, ArticleStatus.PUBLISHED, pageable);
-        int n = articlePage.getTotalPages();
+//        int n = articlePage.getTotalPages();
 
         List<ArticleDTO> dtoList = new LinkedList<>();
-        articlePage.getContent().forEach(article -> {
-            dtoList.add(shortDTOInfo(article));
-        });
+        articlePage.getContent().forEach(article -> dtoList.add(shortDTOInfo(article)));
         return dtoList;
     }
 
@@ -299,9 +293,7 @@ public class ArticleService {
                 typeKey, pageable);
 
         List<ArticleDTO> dtoList = new LinkedList<>();
-        articlePage.getContent().forEach(article -> {
-            dtoList.add(shortDTOInfo(article));
-        });
+        articlePage.getContent().forEach(article -> dtoList.add(shortDTOInfo(article)));
         return dtoList;
     }
 
@@ -311,18 +303,14 @@ public class ArticleService {
         List<ArticleEntity> articleList = articleRepository.findTop5ByCategoryAndStatusAndVisibleTrueOrderByCreatedDateDesc(
                 category, ArticleStatus.PUBLISHED);
         List<ArticleDTO> dtoList = new LinkedList<>();
-        articleList.forEach(article -> {
-            dtoList.add(shortDTOInfo(article));
-        });
+        articleList.forEach(article -> dtoList.add(shortDTOInfo(article)));
         return dtoList;
     }
 
     public List<ArticleDTO> getLast5ArticleByCategory3(String categoryKey) {
         List<ArticleShortInfo> articleList = articleRepository.findTop5ByArticleByCategory2(categoryKey);
         List<ArticleDTO> dtoList = new LinkedList<>();
-        articleList.forEach(article -> {
-            dtoList.add(shortDTOInfo(article));
-        });
+        articleList.forEach(article -> dtoList.add(shortDTOInfo(article)));
         return dtoList;
     }
 
